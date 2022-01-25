@@ -1,0 +1,209 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300|Raleway:300,400,900,700italic,700,300,600">
+        <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/animate.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                background-color: #cc14ff;
+                background-image: linear-gradient(45deg, #cc14ff 0%, #21fff4 45%, #ffe0aa 88%); 
+            }
+            .Main{
+                position: absolute;
+                top:0px;
+                left: 0px;
+                
+            }
+            .main2{
+                background-color: aliceblue;
+                position: absolute;
+                top:0px;
+                left:245px;
+                font-size:90;
+                padding-left: 50px;
+                padding-bottom: 18.5px;
+                padding-right: 386px;
+                background-color: white;
+                padding-top: 10px;
+            }
+            .error{
+                width:700px;
+                height: 50px;
+                background-color: orange;
+                color:red;
+                position: absolute;
+                top:150px;
+                font-size:30px;
+            }
+            .error_aft{
+                width:700px;
+                height: 50px;
+                background-color: orange;
+                color:red;
+                position: absolute;
+                top:150px;
+                font-size:30px;
+            }
+            .main{
+                position: absolute;
+                top:0px;
+                left:0px;
+                width:1530px;
+                height:100px;
+                background-color: white;
+            }
+            table{
+                margin-top:160px;
+                border-color:aqua;
+            }
+            th,td{
+                table-layout: fixed;
+                padding-left: 20px;
+                padding-right: 20px;
+                height:50px;
+                border-width: thick;
+                border-color: black;
+                border:2px solid black;
+                border-style: double;
+            }
+            th{
+                font-size: 25px;
+                font-weight: 500;
+                text-align: center;
+                background-color: aqua;
+                
+            }
+            td{
+                margin-left:30px;
+                background-color: red;
+                text-align: center;
+                font-size:20px;
+            }
+            p{
+                color:red;
+                font-size:10px;
+            }
+            .from,.to{
+                font-size:20px;
+            }
+            label{
+                font-size:20px;
+                margin-left: 10px;
+            }
+            .FROM{
+                margin-top:10px;
+                margin-left:100px;
+            }
+            .TO{
+                margin-top:10px;
+                margin-left: 122px;
+            }
+            .TR_NO{
+                margin-top:10px;
+                margin-left: 66px;
+                font-size:20px;
+            }
+            .DATE{
+                width:255px;
+                margin-top:10px;
+                margin-left: 106px;
+                font-size:20px;
+            }
+            .CLS{
+                margin-top:10px;
+                margin-left: 100px;
+                font-size:20px;
+            }
+            .sub{
+                background-color: aqua;
+                width:200px;
+                height:50px;
+                border-radius: 40px;
+                border: none;
+                font-size:20px;
+                margin-left:50px;
+                margin-top: 20px;
+            }
+            .sub:hover{
+                background-color: azure;
+            }
+            .exp{
+                margin-left: 80px;
+                width:255px;
+                height:30px;
+                margin-top:10px;
+                font-size:20px;
+            }
+            .len{
+                width:0px;
+                height:0px;
+                border: none;
+                background-color: #cc14ff;
+                background-image: linear-gradient(45deg, #cc14ff 0%, #21fff4 45%, #ffe0aa 88%); 
+                
+            }
+        </style>
+        <script>
+            
+        </script>
+    </head>
+    <body>
+        <div class='Main'><img src='../static/img/travel.png'></div>    
+        <div class='main2'>Mystic Tours & Travels </div>
+        {% if error %}
+                <div class='error'>{{error}}</div>
+        {%elif not error%}
+        
+        <form action="{{url_for('rail')}}"  method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Train name</th>
+                    <th>Train No.</th>
+                    <th>Arrival Time</th>
+                    <th>Reaching Time</th>
+                    <th>Trip Time</th>
+                    <th>Select</th>
+                </tr>
+            </thead>
+        {%for c in range(0,len_prod)%}
+                <tr>
+                    <td class='from'>{{products[c][0]}}<p>#####</p>{{products[c][1]}}</td>
+                    <td class='to'>{{products[c][2]}}<p>#####</p>{{products[c][3]}}</td>
+                    <td>{{products[c][4]}}</td>
+                    <td>{{products[c][5]}}</td>
+                    <td>{{products[c][6]}}</td>
+                    <td>{{products[c][7]}}</td>
+                    <td>{{products[c][8]}}</td>
+                    <td><center><input type='checkbox' name='option{{c+1}}'></center></td>
+                </tr>
+        
+        {%endfor%}
+        </table><br>
+        
+        <label>Date</label><input type='date' class='DATE' name='DATE' required><br>
+              
+            <label>Classes</label>
+        <select name="example" class='exp' required>
+                  <option value="Sleeper">Sleeper</option>
+                  <option value="3-AC">3-AC</option>
+                  <option value="2-AC">2-AC</option>
+                    <option value="First_Class">First Class</option>
+        </select><br>
+        
+        <input type='submit' class='sub' value="Confirm">
+            <input type='text' name='length' class='len' value={{lght}}>
+            <input type='text' name='from' class='len' value={{From}}>
+            <input type='text' name='to' class='len' value={{To}}>
+            <input type='text' name='user' class='len' value={{user}}>
+        </form>    
+        {%endif%}
+    </body>
+</html>
+     

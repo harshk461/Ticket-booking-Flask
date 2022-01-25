@@ -1,0 +1,299 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-image: linear-gradient(aqua,red,blue)
+            }
+            .jour,.psng{
+                color:blue;
+                width:1520px;
+                background-color: 3399FF;
+                font-size: 30px;
+                height:40px;
+            }
+            .pasng{
+                
+                font-size: 30px;
+                text-align: center;
+                border-color: black;
+                background-color:azure;
+            }
+            .main{
+                text-align: center;
+                background-color: bisque;
+                color:blue;
+            }
+            .sno,.nam,.age,.gen,.brth,.fod{
+                text-align: center;
+                font-size: 30px;
+                border: 2px solid bisque;
+            }
+            .sno{
+                width:100px;
+            }
+            .nam{
+                width:350px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .age{
+                width:100px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .gen{
+                width:100px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .brth{
+                width:350px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .fod{
+                width:320px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            th{
+                color:red;
+                border: 2px solid black;
+                width:500px;
+                text-align: left;
+                font-size:20px;
+                height:50px;
+                text-transform: uppercase;
+                border-radius: 10px;
+            }
+            .t_d{
+                border:none;
+                background-color:#f9f9f9;
+                color:  black;
+            }
+            .whole{
+                width:1510px;
+                height:350px;
+                border-style: solid;
+                border-color: #3399ff;
+            }
+            .block1{
+                margin-top:35px;
+                width:500px;
+                height:270px;
+                background-color: bisque;
+                margin-left:100px;
+            }
+            .main_cnc,.alt_cnc,.book_time,.aval{
+                font-size:20px;
+                padding-left: 10px;
+                padding-top: 10px;
+            }
+            ma{
+                width:600px;
+                background-color: #3399ff;
+                font-size:30px;
+                padding-left:20px;
+                padding-right: 90px;
+            }
+            .fare{
+                margin-top:-270px;
+                margin-left:800px;
+                width:500px;
+                height:270px;
+                background-color: bisque;
+            }
+            
+            fr{
+                text-align: center;
+                width:500px;
+                background-color: #3399ff;
+                font-size:30px;
+                padding-left:170px;
+                padding-right: 184px;
+            }
+            .tick_fare,.no_psng,.srv,.tot{
+                padding-top:10px;
+                font-size: 20px;
+            }
+            main{
+                width:1510px;
+                height:50px;
+                color:blue;
+                font-size:30px;
+                background-color: #3399ff;
+            }
+            .select{
+                font-size:20px;
+                padding-right:100px;
+                padding-left:20px;
+                color:crimson;
+            }
+            .bank{
+                width:200px;
+                height: 30px;
+                font-size:20px;
+            }
+            .sub{
+                margin-left:500px;
+                margin-top:20px;
+                width:220px;
+                height:40px;
+                background-color: #3399ff;
+                font-size:20px;
+            }
+            .new{
+                color:blue;
+            }
+            .fin{
+                width:0px;
+                height:0px;
+            }
+            .lst{
+                width:0px;
+                height:0px;
+                background-color: blue;
+                border-width: 0px;
+                border-color: blue;
+            }
+            .main,.LEN{
+                width:0px;
+                height:0px;
+            }
+            p1{
+                width:400px;
+                height: 50px;
+                font-size: 25px;
+                background-color: orange;
+                color:crimson;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <form action="{{url_for('final')}}" method="post">
+            {%if error%}
+                <p1>{{error}}</p1>
+            {%else%}
+            <div class='jour'>Jouney Details</div><br>
+            <div class='jouney'>
+                <table>
+                <thead>
+                    <tr>
+                        <th class='t_d'>Train Name: {{lst[0]}}</th>
+                        <th class='t_d'>Class: {{lst[2]}}</th>
+                        <th class='t_d'>Date: {{lst[1]}}</th>
+                    </tr>
+
+                    <tr>
+                        <th class='t_d'>From: {{lst[3]}}</th>
+                        <th class='t_d'>To: {{lst[4]}}</th>
+                        <th class='t_d'>Train No.: {{lst[5]}}</th>
+                    </tr>
+                </thead>
+            </table><br>
+                <div class='psng'>Passenger Details</div><br>
+            </div>
+            <!========================================================================================================>
+            <table>
+                <thead>
+                    <tr class='main'>
+                        <td class='sno'>SL.No</td>
+                        <td class='nam'>Name</td>
+                        <td class='age'>Age</td>
+                        <td class='gen'>Gender</td>
+                        <td class='brth'>Berth Perference</td>
+                        <td class='fod'>Meal</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for j in range(0,len_x)%}
+
+                    <tr class='pasng'>
+                        <td class='sno'>{{j+1}}</td>
+                        <td class='nam'>{{MAIN[j][0]}}</td>
+                        <td class='nam'>{{MAIN[j][1]}}</td>
+                        <td class='age'>{{MAIN[j][2]}}</td>
+                        <td class='brth'>{{MAIN[j][3]}}</td>
+                        <td class='fod'>{{MAIN[j][4]}}</td>
+                    </tr>
+
+                    {%endfor%}
+                </tbody>
+            </table>
+            <div class='whole'>
+                <div class='block1'>
+                    <ma>Contact Details/Booking Details</ma>
+                    <p class='main_cnc'>Main Contact: <label class='new'>{{main_cnc}}</label></p>
+                    <p class='alt_cnc'>Alternate Contact: <label class='new'>{{alt_cnc}}</label></p>
+                    <p class='aval'>Availability:<label class='new'>{{aval}}</label></p>
+                </div>
+
+                <div class='fare'>
+                    <fr class='fr'>Fare Details</fr><br>
+                    <p class='tick_fare'>Ticket Fare: <label class='new'>{{tik_fare}}</label></p>
+                    <p class='no_psng'>No. Of Passenger: <label class='new'>{{len_x}}</label></p>
+                    <p class='srv'>Service Charge: <label class='new'>{{srv}}</label></p>
+                    <p class='tot'>Total Fare:<label class='new'>{{tot}}</label></p> 
+
+                </div>
+            </div>
+            <br><div class='payment'>
+                <main>Payment Option</main><br>
+                <we class='select'>Select Bank:</we>
+                <select class='bank' name='bank'>
+                    <option>Select Bank</option>
+                    <option>SBI</option>
+                    <option>Axis Bank</option>
+                    <option>PNB</option>
+                </select><br>
+            <input type='submit' class='sub' value="Make Payment"> 
+            </div>
+
+
+                <input type='text' class='lst' name='trn' value={{tr_nm}}>
+
+                <input type='text' class='lst' name='clas' value={{cls}}>
+
+                <input type='text' class='lst' name='dat' value={{date}}>
+
+                <input type='text' class='lst' name='fro' value={{from_code}}>
+
+                <input type='text' class='lst' name='to' value={{to_code}}>
+
+                <input type='text' class='lst' name='trno' value={{tr_no}}>
+
+                <select class='lst'  name='brth1'>
+                    <option>{{brth1}}</option>
+                </select>
+               
+                <select class='lst'  name='brth2'>
+                    <option>{{brth2}}</option>
+                </select>
+                
+                <select class='lst'  name='brth3'>
+                    <option>{{brth3}}</option>
+                </select>
+
+                <select class='lst'  name='brth4'>
+                    <option>{{brth4}}</option>
+                </select>
+
+                <select class='lst'  name='brth5'>
+                    <option>{{brth5}}</option>
+                </select>
+
+                <select class='lst'  name='brth6'>
+                    <option>{{brth6}}</option>
+                </select>
+
+                <input type='text' class='lst' name='total' value={{total}}>
+
+                <input type='text' class='lst' name='mobile' value={{mob_main}}>
+            
+                <input type='text' class='lst' name='user' value={{user}}>
+            {%endif%}
+            </form>
+    </body>
+</html>

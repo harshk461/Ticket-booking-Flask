@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-image: linear-gradient(45deg, bisque 20%, dodgerblue 60% ,greenyellow 90%);
+            }
+            .main{
+                font-size: 60px;
+                color:crimson;
+                text-align: center;
+            }
+            .main2{
+                font-size: 30px;
+            }
+            .lbl,.lbl1,.mail,.sub,.pnr{
+                position: absolute;
+                font-size: 30px;
+                top:130px;
+            }
+            .mail{
+                width:350px;
+                left:200px;
+            }
+            .sub{
+                left:415px;
+                top:250px;
+                padding-left: 20px;
+                padding-right: 20px;
+                font-size: 30px;
+                background-color: dodgerblue;
+                border:none;
+            }
+            .lbl1{
+                margin-top: 20px;
+                top:170px;
+            }
+            .pnr{
+                margin-top: 20px;
+                top:170px;
+                left:200px;
+                width:350px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='main'>Send Ticket on Mail</div>
+        <div class='main2'>Enter correct mail in the below entry box</div>
+        <form action='{{url_for("send_ticket_mail")}}' method='post'>
+            <label class='lbl'>Enter Mail</label>
+            <input type='text' name='mail' class='mail' placeholder="Enter Mail">
+            <input type='submit' class='sub'>
+        </form>
+    </body>
+</html>

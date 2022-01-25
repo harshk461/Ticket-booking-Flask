@@ -1,0 +1,262 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body{
+                background-image: url('../static/img/1.jpg');
+                background-repeat: no-repeat;
+            }
+            .Main{
+                position: absolute;
+                top:0px;
+                left: 0px;
+            }
+            
+            .main2{
+                position: absolute;
+                top:0px;
+                left:245px;
+                font-size:98px;
+                padding-left: 50px;
+                padding-bottom: 9.7px;
+                padding-right: 309.5px;
+                background-color: white;
+                width:auto; 
+                padding-top: 10px;
+                width:auto;
+                min-width: 1000px;
+            }
+            .container{
+                position: absolute;
+                top:150px;
+                left:100px;
+                height:530px;
+                width:500px;
+                background-color: white;
+            }
+            .error{
+                position: absolute;
+                top: 530px;
+                width:400px;
+                height:50px;
+                background-color: orange;
+                color:antiquewhite;
+            }
+            .banner2{
+                position: absolute;
+                top:0px;
+                left:100px;
+                width:240px;
+                height:150px;
+                
+            }
+            .FROM{
+                position: absolute;
+                top:200px;
+                left:70px;
+                width:350px;
+                height: 40px;
+                font-size: 20px;
+                border-style: groove;
+                border-width: thick;
+                margin-bottom:30px;
+            }
+            .TO{
+                position: absolute;
+                top:270px;
+                left:70px;
+                width:350px;
+                height: 40px;
+                font-size: 20px;
+                border-style: groove;
+                border-width: thick;
+                
+            }
+            .date{
+                position: absolute;
+                top:330px;
+                left:70px;
+                width:350px;
+                height: 40px;
+                font-size: 20px;
+                border-style: groove;
+                border-width: thick;
+            }
+            input[type='date']{
+                position: absolute;
+                top:330px;
+                left:70px;
+                width:350px;
+                height:40px;
+                font-size: 20px;
+                border-style: groove;
+                border-width: thick;    
+            }
+            select{
+                position: absolute;
+                top:390px;
+                left:70px;
+                width: 350px;
+                height:40px;
+                font-size:20px;
+                border-style: groove;
+                border-width: thick;
+            }
+            .sub{
+                position: absolute;
+                top:450px;
+                left:70px;
+                width:350px;
+                height:40px;
+                font-size: 20px;
+                border:none;
+                background-color: blue;
+                color:white;
+            }
+            .sub:hover{
+                background-color: beige;
+                color:brown;
+            }
+            .empty_block{
+                position: absolute;
+                top:430px;
+                left:600px;
+                width:640px;
+                height: 100px;
+                background-color: whitesmoke;
+            }
+            .pnr,.cncl,.prnt{
+                position: absolute;
+                top:455px;
+                left:610px;
+                height: 50px;
+                font-size: 20px;
+                padding-left: 30px;
+                padding-right: 30px;
+                font-weight: bolder;
+            }
+            .cncl{
+                left:835px;
+            }
+            .prnt{
+                left:1055px;
+            }
+            .fare_detail{
+                position: absolute;
+                left:600px;
+            }
+            .prc_tab{
+                margin-top: -14px;
+                font-size:35px;
+                padding-top:10px;
+                padding-bottom:10px;
+                background-color: dodgerblue;
+                text-align: center;
+                font-weight: bold;
+            }
+            .cls,.prc{
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left:65px; 
+                padding-right:65px;
+                font-size:25px;
+                background-color: dodgerblue;
+                color:white;
+                font-weight: bolder;
+            }
+            .cls{
+                padding-left: 80px;
+                padding-right: 80px;
+            }
+            .sno{
+                font-weight: bolder;
+                color:white;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left:40px; 
+                padding-right:40px;
+                font-size:25px;
+                background-color: dodgerblue;
+            }
+            .sno1,.cls1,.prc1{
+                text-align: center;
+                font-weight: bolder;
+                color:black;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                font-size:25px;
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='Main'><img src='../static/img/travel.png'></div>
+        <div class='main2'>Mystic Tours & Travels </div>
+        <div class='container'>
+            <img src='../static/img/6.png' class='banner2'>
+            <form action="{{url_for('info')}}" method='post'>
+                <input class='FROM' type='text' name='From' value='{{request.form.From}}' placeholder='From*'>
+                <input class='TO' type='text' name='To' value='{{request.form.To}}' placeholder='To*'>
+                 <input name='dat' type="date" data-date-inline-picker="true" value='{{cur_date}}'/>
+                <select name="example">
+                  <option value="Sleeper">Sleeper</option>
+                  <option value="3-AC">3-AC</option>
+                  <option value="2-AC">2-AC</option>
+                    <option value="First_Class">First Class</option>
+                </select>
+                <input class='sub' type='submit' value='Find Train'>
+            </form>
+            
+            <div class='fare_detail'>
+                <p class='prc_tab'>Price Table</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <td class='sno'>SNo.</td>
+                            <td class='cls'>Class</td>
+                            <td class='prc'>Price(General)</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class='sno1'>1.</td>
+                            <td class='cls1'>First Class (FC)</td>
+                            <td class='prc1'>Rs. 500</td>
+                        </tr>
+                        <tr>
+                            <td class='sno1'>2.</td>
+                            <td class='cls1'>AC 2 Tire (2-AC)</td>
+                            <td class='prc1'>Rs. 400</td>
+                        </tr>
+                        <tr>
+                            <td class='sno1'>3.</td>
+                            <td class='cls1'>AC 3 Tire (3-AC)</td>
+                            <td class='prc1'>Rs. 300</td>
+                        </tr>
+                        <tr>
+                            <td class='sno1'>4.</td>
+                            <td class='cls1'>Sleeper (SL)</td>
+                            <td class='prc1'>Rs. 200</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <form action="{{url_for('pnr')}}" method="post">
+                <div class='empty_block'></div>
+                <div class='pnr_block'>
+                    <input type='submit' name='pnr' class='pnr' value='PNR Enquirey'>
+                </div>
+            </form>
+            
+            <form action="{{url_for('cancel')}}" method="post">
+                <div class='cncl_block'>
+                    <input type='submit' name='cancel' class='cncl' value='Cancel Ticket'>
+                </div>
+            </form>
+            <form action="{{url_for('print_ticket_in_final')}}" method="post">
+                <div class='cncl_block'>
+                    <input type='submit' name='cancel' class='prnt' value='Print Ticket'>
+                </div>
+            </form>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+Transaction ID: CB6950288861 PNR No : 3092914261
+Train No. & Name: 23456/AGR-DEL EXP Date of Journey:2020-12-31
+Class: CC Date of Booking: 2020-06-26 Date of Boarding:2020-12-31
+From: DEL To :AGR Distance: 0259 KM
+Boarding : DEL Resv Upto: AGR Quota: General
+Scheduled Departure: 06:05 Total Fare : Rs 850.00 Adult: 2 Child: 0
+*Departure time printed on the ERS is liable to change. New time table from 01-07-2008

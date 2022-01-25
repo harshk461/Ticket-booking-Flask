@@ -1,0 +1,226 @@
+<html>
+    <head>
+        
+        <style>
+            body{
+                background-image: linear-gradient(45deg, bisque 20%, dodgerblue 60% ,greenyellow 90%);
+            }
+            qw{
+                color:blue;
+                font-size:20px;
+                padding-left: 10px;
+            }
+            .ticket_details,.journery{
+                width:1490px;
+                height:40px; 
+                background-color: dodgerblue;
+                font-size:30px;
+                padding-top: 7px; 
+                padding-bottom: 7px;
+                padding-left:15px;
+            }
+            .ticket_block{
+                width:1500px;
+                height:260px;
+                border:solid;
+                border-color: aqua;
+            }
+            .journey_block{
+                border:solid;
+                border-color: aqua;
+                padding-bottom: 20px;
+            }
+            .ers{
+                width:150px;
+                height:30px;
+                background-color: dodgerblue;
+                border:none;
+                margin-left:600px;
+                margin-top:10px;
+            }
+            .ers:hover,.anoth:hover,.send:hover{
+                background-image: linear-gradient(red,aqua);
+            }
+            .anoth{
+                width:120px;
+                height:30px;
+                font-size:15px;
+                background-color: #f9f9f9;
+                border-width:thin;
+                margin-left: 400px;
+                margin-top: 10px;
+            }
+            .sno,.nam,.age,.gen,.mel,.stat,.coch,.seat,.cnf{
+                padding:10px 10px 10px 10px;
+                border:solid;
+                font-size:23px;
+                background-color: dodgerblue;
+            }
+            .sno1,.nam1,.age1,.gen1,.mel1,.stat1,.coch1,.seat1,.cnf1{
+                padding:10px 10px 10px 10px;
+                border:solid;
+                font-size:23px;
+            }
+            .seat{
+                width:240px;
+                
+            }
+            .coch{
+                width:140px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .stat{
+                width:120px;
+            }
+            .nam{
+                width:250px;
+            }
+            .mel{
+                width:100px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .cnf{
+                width:200px;
+            }
+            .trns,.dat_bok,.dat_jour,.from1,.dist,.tot{
+                padding-left: 12px;
+                padding-right:280px;
+                padding-bottom: 20px;
+                font-size:18px;
+                font-weight: bold;
+            }
+            .trns{
+                padding-top:10px;
+            }
+            .pnr,.cls,.from,.dat_jor1,.sch_dept,.sch_dept1,.psng{
+                padding-right:250px;
+                font-size: 18px;
+                padding-left:20px;
+                font-weight: bold;
+            }
+            .trn,.quota,.to,.to1,.sch_arv,.sch_dept1{
+                font-size:18px;
+                padding-left: 0px;
+                font-weight: bold;
+            }
+            .new{
+                text-align: center;
+                font-size:22px;
+                padding-top: 10px;
+            }
+            table{
+                margin-left:5px;
+            }
+            .anoth,.send{
+                width:160px;
+                height:30px;
+                background-color: dodgerblue;
+                border:none;
+                margin-left:800px;
+                margin-top: 27px;
+            }
+            .send{
+                margin-top: -100px;
+            }
+            .empty{
+                width:0px;
+                height: 0px;
+                border:none;
+                background-image: linear-gradient(45deg, bisque 20%, dodgerblue 60% ,greenyellow 90%);  
+            }
+            passng_table{
+                border:none;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="{{url_for('another')}}" method='post'>
+        <qw>Congralutation!.You have successfully booked a ticket.Please print the ERS and carry it along with a relevant photo ID card while travelling</qw>
+        <qw>By using {{BANK}} your payment has been done</qw>
+            
+        <div class='ticket_details'>Ticket Details</div>
+        
+        <div class='ticket_block'>
+            <table>
+                    <tr>
+                        <td class='trns'>Transaction ID: {{trns_id}}</td>
+                        <td class='pnr'>PNR No: {{pnr}}</td>
+                        <td class='trn'>Train No.Name: {{tr_na_id}}</td>
+                    </tr>
+                    <tr>
+                        <td class='dat_bok'>Date Of Booking: {{dat_book}}</td>
+                        <td class='cls'>Class: {{cls}}</td>
+                        <td class='quota'>Quota: {{quota}}</td>
+                    </tr>
+                    <tr>
+                        <td class='dat_jour'>Date Of Journey: {{dat_jour}}</td>
+                        <td class='from'>From: {{FROM}}</td>
+                        <td class='to'>To: {{TO}}</td>
+                    </tr>
+                    <tr>
+                        <td class='from1'>Boarding At: {{FROM}}</td>
+                        <td class='dat_jor1'>Date Of Boarding: {{dat_jour}}</td>
+                        <td class='to1'>Reserved Upto: {{TO}}</td>
+                    </tr>
+                    <tr>
+                        <td class='dist'>Distance: {{dist}} KM</td>
+                        <td class='sch_dept'>Scheduled Departure: {{sch_dept}}</td>
+                        <td class='sch_arv'>Scheduled Arrival: {{sch_arv}}</td>
+                    </tr>
+                    <tr>
+                        <td class='tot'>Total Fare:Rs {{total}}</td>
+                        <td class='psng'>Passenger No: {{psng}}</td>
+                    </tr>
+            </table>
+        </div>
+        
+        <div class='journery'>Journey Details</div>
+        <div class='journey_block'>
+            <table cellspacing='0' class='passng_table'>
+                <thead>
+                    <tr>
+                        <b><th class='sno'>Sl.NO</th></b>
+                        <b><th class='nam'>Name</th></b>
+                        <b><th class='age'>Age</th></b>
+                        <b><th class='gen'>Gender</th></b>
+                        <b><th class='mel'>Meal</th></b>
+                        <b><th class='stat'>Status</th></b>
+                        <b><th class='seat'>Seat/Berth/WL No</th></b>
+                        <b><th class='coch'>Coach</th></b>
+                        <b><th class='cnf'>Current Status</th></b>
+                    </tr>
+                </thead >
+                <tbody class='new'>
+            {%for j in range(0,len_main)%}
+                <tr>
+                <td class='sno1'>{{j+1}}</td>
+                <td class='nam1'>{{MAIN[j][0]}}</td>
+                <td class='age1'>{{MAIN[j][1]}}</td>
+                <td class='gen1'>{{MAIN[j][2]}}</td>
+                <td class='mel1'>{{MAIN[j][3]}}</td>
+                <td class='stat1'>{{MAIN[j][4]}}</td>
+                <td class='seat1'>{{MAIN[j][6]}}</td>
+                <td class='coch1'>{{MAIN[j][7]}}</td>
+                <td class='cnf1'>CNF</td>
+                </tr>
+            {%endfor%}
+                </tbody>
+            </table>
+        </div>
+            <input type='text' class='empty' name='pnr_emp' value={{pnr}}>
+            <input type='submit' value='Book Another Ticket' class='anoth'>
+        </form>
+        <form action="{{url_for('print_ticket')}}" method='post'>
+            <input type='submit' value='Print ERS' class='ers'>
+            <input type='text' class='empty' name='pnr_emp' value={{pnr}}>
+        </form>
+        
+        <form action="{{url_for('send_ticket')}}" method='post'>
+            <input type='submit' value='Send Ticket Mail' class='send'>
+            <input type='text' class='empty' name='pnr_emp' value={{pnr}}>
+        </form>
+        
+    </body>
+</html>

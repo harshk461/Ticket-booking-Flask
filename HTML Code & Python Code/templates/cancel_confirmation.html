@@ -1,0 +1,197 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body{
+                background-image: linear-gradient(45deg, bisque 20%, dodgerblue 60% ,greenyellow 90%);  
+            }
+            .cncl_request{
+                width:1515px;
+                margin-left:-7px;
+                font-size: 25px;
+                font-weight: 900;
+                padding-left: 20px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+                background-image: linear-gradient( to bottom,dodgerblue,skyblue)
+            }
+            .book_tick_det{
+                border:1px solid blue;
+                width:1523px;
+            }
+            .booked_ticket,.passng{
+                margin-left: 12px;
+                width:1480px;
+                font-size: 25px;
+                font-weight: 900;
+                padding-left: 20px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+                color:azure;
+                background-image: linear-gradient( to bottom,dodgerblue,skyblue)
+            }
+            .detail_table,.passng_det{
+                margin-left: 20px;
+            }
+            td{
+                width:500px;
+                padding-bottom: 10px;
+                font-size:18px;
+            }
+            .bo{
+                font-weight: bold;
+            }
+            .sno,.nam,.age,.gen,.book_stat,.curr_stat,.select{
+                font-size:18px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+                background-image: linear-gradient( to bottom,lightblue,skyblue);
+                text-align: center;
+                color:blue;
+                font-weight: 900;
+            }
+            .sno1,.nam1,.age1,.gen1,.book_stat1,.curr_stat1,.select1{
+                background-color: white;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                border:1px solid black;
+                font-size:18px;
+            }
+            .sno{
+                width:100px;
+            }
+            .nam{
+                width:400px;
+            }
+            .age{
+                width:150px;
+            }
+            .gen{
+                width:200px;
+            }
+            .book_stat{
+                width:300px;
+            }
+            .curr_stat{
+                width:300px;
+            }
+            .select{
+                width:150px;
+            }
+            .cancl_block{
+                height:20px;
+                border:1px solid dodgerblue;
+                width:1475px;
+                margin-left: 22px;
+            }
+            .cncl_btn{
+                padding-left: 5px;
+                padding-right: 5px;
+                background-image: linear-gradient( to bottom,lightblue,skyblue);
+                border: none;
+                font-weight: 800;
+                margin-left: 1300px;
+            }
+            .empty{
+                width:0px;
+                height:0px;
+                border:none;
+            }
+        </style>        
+    </head>
+    <body>
+        <div class='cncl_request'>Cancellation Request</div><br>
+        <div class='book_tick_det'>
+            <div class='booked_ticket'>Booked Ticket Details</div><br>
+            <table class='detail_table'>
+                <thead>
+                    <tr>
+                        <td class='bo'>Cancellation ID</td>
+                        <td>{{cncl_id}}</td>
+                        <td class='bo'>PNR Number</td>
+                        <td>{{LMAIN[0]}}</td>
+                    </tr>
+                    <tr>
+                        <td class='bo'>Train Number</td>
+                        <td>{{LMAIN[8]}}</td>
+                        <td class='bo'>Train Name</td>
+                        <td>{{LMAIN[7]}}</td>
+                    </tr>
+                        
+                    <tr>
+                        <td class='bo'>Date of Journey</td>
+                        <td>{{LMAIN[3]}}</td>
+                        <td class='bo'>Date of Cancellation</td>
+                        <td>{{LMAIN[2]}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class='bo'>From</td>
+                        <td>{{LMAIN[4]}}</td>
+                        <td class='bo'>To</td>
+                        <td>{{LMAIN[5]}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class='bo'>Quota</td>
+                        <td>General/GN</td>
+                        <td class='bo'>Class</td>
+                        <td>{{cls}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class='bo'>Boarding At</td>
+                        <td>{{LMAIN[4]}}</td>
+                        <td class='bo'>Reservation Upto</td>
+                        <td>{{LMAIN[5]}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class='bo'>Departure DateTime</td>
+                        <td>{{LMAIN[4]}}</td>
+                        <td class='bo'>Arrival DateTime</td>
+                        <td>{{LMAIN[5]}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class='bo'>Booking Amount</td>
+                        <td>{{tot}}</td>
+                        <td class='bo'>Cancellation Charges</td>
+                        <td>{{tot}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class='bo'>Refunded Amount</td>
+                        <td>{{tot}}</td>
+                        <td class='bo'>No. of Cancelled Passenger</td>
+                        <td>{{tot}}</td>
+                    </tr>
+                </thead>
+            </table><br>
+            <div class='passng'>Passengers</div>
+            <table class='passng_det'>
+                <thead>
+                    <tr>
+                        <th class='sno'>SL No.</th>
+                        <th class='nam'>Name</th>
+                        <th class='age'>Age</th>
+                        <th class='gen'>Gender</th>
+                        <th class='book_stat'>Booking Status</th>
+                        <th class='curr_stat'>Current Seats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for x in range(0,len_list)%}
+                    <tr>
+                        <th class='sno1'>{{x+1}}</th>
+                        <th class='nam1'>{{PASSNG[x][0]}}</th>
+                        <th class='age1'>{{PASSNG[x][1]}}</th>
+                        <th class='gen1'>{{PASSNG[x][2]}}</th>
+                        <th class='book_stat1'>{{PASSNG[x][5]}}</th>
+                        <th class='curr_stat1'>CAN</th>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+    </body>
+</html>

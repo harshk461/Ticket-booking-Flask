@@ -1,0 +1,145 @@
+<html lang="en">
+<head>
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        .limiter{
+            position: absolute;
+            background-color: white;
+            left:300px;
+            top:35px;
+            width:60%;
+            height: 90%;
+            border-radius: 20px;
+        }
+        .login100-form-title{
+            position: absolute;
+            top:30%;
+            left:65%;
+            color:black;
+            font-size: 30px;
+            font-weight: bolder;
+            
+        }
+        body{
+            background-color: #cc14ff;
+            background-image: linear-gradient(45deg, #cc14ff 0%, #21fff4 45%, #ffe0aa 88%); 
+        }
+        .img_main{
+            position: absolute;
+            top:25%;
+            left:10%;
+            will-change: transform;
+            transform: perspective(300px) rotateX(0deg) rotateY(0deg);
+        }
+        i1,i2{
+            position: absolute;
+            top:42%;
+            left:63%;
+        }
+        i2{
+            top:52%;
+        }
+        .input100,.input200{
+            width:265px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size:20px;
+            background-color: #e1ffc2;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: none;
+            position: absolute;
+            left:60%;
+            top:40%;
+            padding-left: 50px;
+        }
+        .input200{
+            margin-top: 70px;
+        }
+        .login100-form-btn{
+            width:320px;
+            font-size: 20px;
+            font-weight: bolder;
+            padding:10px 10px 10px 0; 
+            border-radius: 20px;
+            border: none;
+            pointer-events: painted;
+            position: absolute;
+            top:60%;
+            left:60%;
+            background-color: limegreen;
+            color:white;
+            transition: background 2s;
+        }
+        .login100-form-btn:hover{
+            color:white;
+            background-color: black;
+        }
+        .txt1,.txt2,.txt3{
+            position: absolute;
+            top:70%;
+            left:65%;
+            color:darkgray;
+        }
+        .txt2{
+            position: absolute;
+            left:70%;
+            color:darkgray;
+        }
+        .txt3{
+            color: black;
+            top:90%;
+            left:70%;
+        }
+        p{
+            margin-left: 20px;
+            width:400px;
+            padding-bottom: 5px;
+            color:red;
+            font-size:30px;
+            opacity: 0.92;
+        }
+    </style>
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic">
+					<img class='img_main' src="../static/img/img-01.png" alt="IMG">
+				</div>
+					<span class="login100-form-title">
+						Member Login
+					</span>
+                    <form action="{{url_for('first')}}" method='post'>
+                        {%if error%}
+                        <p>{{error}}</p>
+                        {%endif%}
+                            <input class="input100" type="text" name="email" placeholder="Username">
+                                <i1 class="fa fa-envelope"></i1>
+                            <input class="input200" type="password" name="pass" placeholder="Password">
+                            
+                            <i2 class="fa fa-lock"></i2>
+            
+                            <input type="submit" class="login100-form-btn" value="LOGIN">
+                    
+						<span class="txt1">
+							Forgot
+						</span>
+						<a class="txt2" href="{{url_for('forgort')}}">
+							Username / Password?
+                    </a>
+						<a class="txt3" href="{{url_for('create')}}">
+							Create your Account
+							<i class="fa fa-long-arrow-right m-l-5" ></i>
+                    </a>
+				    </form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+        <style>
+            body{
+                background-color: #cc14ff;
+                background-image: linear-gradient(45deg, #cc14ff 0%, #21fff4 45%, #ffe0aa 88%); 
+            }
+            .main{
+                font-size:40px;
+                font-family: sans-serif;
+                padding-left: 210px;
+            }
+            .psng_stat{
+                margin-top:30px;
+                width:1510px;
+                height: 50px;
+                background-color: dodgerblue;
+                text-align: center;
+                font-size:35px;
+            }
+            .enter{
+                font-size:25px;
+            }
+            .ent_pnr{
+                padding-left: 120px;
+                font-size: 25px;
+            }
+            .pnr{
+                margin-left: 400px;
+                width:300px;
+                font-size:20px;
+                padding-top:5px;
+                padding-bottom:5px;
+            }
+            .sub{
+                margin-left: 675px;
+                margin-top: 30px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                width:130px;
+                font-size: 20px;
+                border-radius: 10px;
+            }
+            .clear{
+                margin-left: 30px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                width:130px;
+                font-size: 20px;
+                border-radius: 10px;
+            }
+            .error,.error1{
+                width:600px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background-color:#ffa34d ;
+                color:#c70039;
+                font-size: 20px;
+                padding-left: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <form action='{{url_for("pnr_det")}}' method="post">
+            <b><label class='main'>INDIAN RAILWAYS PASSENGER RESERVATION ENQUIRY</label></b>
+            
+            <div class='psng_stat'>Passenger Current Status Enquiry</div>
+            
+            <label class='enter'>Enter the PNR for your booking below to get the current status. You will find it on the top left corner of the ticket.</label><br><br>
+            
+            <br><br><label class='ent_pnr'>Enter PNR No.</label>
+            <input type='text' name='pnr_value' class='pnr' placeholder="Enter PNR No."><br>
+            
+            <input type='submit' name='Submit' class='sub' value='Submit'>
+            
+            <input type='reset' name='clear' class='clear' value='Clear'>
+         </form>
+        {% if error %}
+        <p class="error"><strong>{{error}}</strong>
+        {% endif %}
+            
+        {% if error_of_len %}
+        <p class="error1"><strong>{{error_of_len}}</strong>
+        {% endif %}
+            <p> &#128516;</p>
+    </body>
+</html>

@@ -1,0 +1,397 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-color: #cc14ff;
+                background-image: linear-gradient(45deg, #cc14ff 0%, #21fff4 45%, #ffe0aa 88%); 
+            }
+            .main{
+                font-size:50px;
+                text-align: center;
+            }
+            .jour,.psng,.contact{
+                background-color: #cc14ff;
+                background-image: linear-gradient(45deg, #cc14ff 0%, #21fff4 45%); 
+                color:black;
+                width:1490px;
+                font-size: 30px;
+                height:40px;
+                padding-left: 20px;
+                border-radius: 20px;
+            }
+            .error{
+                width:700px;
+                height: 50px;
+                background-color: orange;
+                color:red;
+                position: absolute;
+                top:150px;
+                font-size:30px;
+            }
+            th{
+                color:red;
+                border: 2px solid black;
+                width:500px;
+                text-align: left;
+                font-size:20px;
+                height:50px;
+                text-transform: uppercase;
+                border-radius: 10px;
+            }
+            .t_d{
+                background-color:f9f9f9;
+                color:  black;
+            }
+            p{
+                color:white;
+            }
+            .psng_main{
+                text-align: center;
+            }
+            .psng_head{
+                border-left-color: white;
+                background-color: whitesmoke;
+                
+            }
+            .psng_Sno{
+                text-align: center;
+                width:100px;
+            }
+            .psng_age{
+                padding-left: 10px;
+                padding-right: 10px;
+                text-align: center;
+                width:80px;
+            }
+            .nam{
+                margin-left: 10%;
+                font-size: 20px;
+                width:80%;
+            }
+            .sno{
+                font-size: 20px;
+                text-align: center;
+            }
+            .age{
+                margin-left: 15%;
+                width:70%;
+                font-size:20px;
+            }
+            .psng_gen{
+                width:160px;
+                text-align: center;
+            }
+            .gen{
+                margin-left: 15%;
+                width:70%;
+                font-size:20px;
+            }
+            
+            .brth{
+                margin-left: 10%;
+                width:80%;
+                font-size: 20px;
+            }
+            .fod{
+                width:70%;
+                font-size:20px;
+                margin-left: 15%;
+            }
+            .nam,.age{
+                border-radius: 10px;
+                border-width: medium;
+            }
+            tr{
+                margin-bottom: 20px;
+            }
+            td{
+                border:1px solid black;
+                border-left-color: white;
+                border-right-color: white;
+                border-top-color: white;
+                padding-bottom: 5px;
+                padding-top: 5px;
+                border:none;
+            }
+            .main_contact,.alt_contact{
+                color:black;
+                font-size: 20px;
+            }
+            .main_cnc{
+                width:170px;
+                font-size:20px;
+                margin-left:72px;
+                margin-bottom: 10px;
+            }
+            .alt_cnc{
+                width:170px;
+                font-size:20px;
+                margin-left: 40px;
+            }
+            .alt_cnc,.main_cnc{
+                border-radius: 10px;
+                width:200px;
+            }
+            .cnf{
+                position: absolute;
+                top:670px;
+                left:600px;
+                width:200px;
+                height:50px;
+                font-size:20px;
+                background-color: darkturquoise;
+                border-radius: 30px;
+            }
+            .cnf:hover{
+                transition: 0.1s;
+                background-color: aquamarine;
+            }
+            .tr_name{
+                width:300px;
+                height:40px;
+                font-size:20px;
+                background-color: #f9f9f9;
+                border:none;
+                text-decoration-style:dashed;
+            }
+            .lst{
+                width: 0px;
+                position: absolute;
+                top:0px;
+                height:0px;
+                border:none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='main'>Passenger Form</div>
+        {%if error%}
+        <div class='error'><strong>{{error}}</strong></div>
+        
+        {%elif not error%}
+        <div class='jour'>Journey Details</div>
+        <form action="{{ url_for('confirm')}}" method="post">
+        <table>
+            <thead>
+                <tr>
+                    <th class='t_d'>Train Name: {{tr_nm}}</th>
+                    <th class='t_d'>Class: {{cls}}</th>
+                    <th class='t_d'>Date: {{date}}</th>
+                </tr>
+                
+                <tr>
+                    <th class='t_d'>From: {{from_code}}</th>
+                    <th class='t_d'>To: {{to_code}}</th>
+                    <th class='t_d'>Train No.: {{tr_no}}</th>
+                </tr>
+            </thead>
+        </table><br>
+        <div class='psng'>Passenger Details</div>
+        <table class='psng_table'>
+            <thead class='psng_head'>
+                <tr>
+                    <th class='psng_Sno'>SNO.</th>
+                    <th class='psng_main'>Name</th>
+                    <th class='psng_age'>Age</th>
+                    <th class='psng_gen'>Gender</th>
+                    <th class='psng_main'>Birth Preference</th>
+                    <th class='psng_main'>Food Preference</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                <tr>
+                    <td class='sno' name='sno1'>1</td>
+                    <td ><input type='text' name='name1' class='nam' value='{{request.form.name1}}'></td>
+                    <td ><input type='text' name='age1' class='age' value='{{request.form.age1}}'></td>
+                    <td class='gender'><select class='gen' name='gen1'>
+                        <option>Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                         </select>
+                    </td>
+                    
+                    <td class='berth'><select  name='berth1' class='brth'>
+                        <option>Choose Berth</option>
+                        <option>Upper Berth</option>
+                        <option>Middle Berth</option>
+                        <option>Lower Berth</option>
+                        <option>Side Upper</option>
+                        <option>Side Lower</option>
+                         </select>
+                    </td>
+                    <td class='food'><select class='fod' name='fod1'>
+                         <option>Select</option>
+                        <option>Veg</option>
+                        <option>Non-Veg</option>
+                         </select>
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                    <td class='sno'>2</td>
+                    <td ><input type='text' name='name2' class='nam' value='{{request.form.name2}}'></td>
+                    <td ><input type='text' name='age2' class='age' value='{{request.form.age2}}'></td>
+                    <td class='gender'><select class='gen' name='gen2'> 
+                        <option>Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                         </select>
+                    </td>
+                    
+                    <td class='berth'><select class='brth' name='berth2'>
+                        <option>Choose Berth</option>
+                        <option>Upper Berth</option>
+                        <option>Middle Berth</option>
+                        <option>Lower Berth</option>
+                        <option>Side Upper</option>
+                        <option>Side Lower</option>
+                         </select>
+                    </td>
+                    <td class='food'><select class='fod' name='fod2'>
+                        <option>Select</option>
+                        <option>Veg</option>
+                        <option>Non-Veg</option>
+                         </select>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class='sno'>3</td>
+                    <td ><input type='text' name='name3' class='nam' value='{{request.form.name3}}'></td>
+                    <td ><input type='text' name='age3' class='age' value='{{request.form.age3}}'></td>
+                    <td class='gender'><select class='gen' name='gen3'>
+                        <option>Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                         </select>
+                    </td>
+                    
+                    <td class='berth'><select class='brth' name='berth3'>
+                        <option>Choose Berth</option>
+                        <option>Upper Berth</option>
+                        <option>Middle Berth</option>
+                        <option>Lower Berth</option>
+                        <option>Side Upper</option>
+                        <option>Side Lower</option>
+                         </select>
+                    </td>
+                    <td class='food'><select class='fod' name='fod3'>
+                        <option>Select</option>
+                        <option>Veg</option>
+                        <option>Non-Veg</option>
+                         </select>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class='sno'>4</td>
+                    <td ><input type='text' name='name4' class='nam' value='{{request.form.name4}}'></td>
+                    <td ><input type='text' name='age4' class='age' value='{{request.form.age4}}'></td>
+                    <td class='gender'><select class='gen' name='gen4'>
+                        <option>Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                         </select>
+                    </td>
+                    
+                    <td class='berth'><select class='brth' name='berth4'>
+                        <option>Choose Berth</option>
+                        <option>Upper Berth</option>
+                        <option>Middle Berth</option>
+                        <option>Lower Berth</option>
+                        <option>Side Upper</option>
+                        <option>Side Lower</option>
+                         </select>
+                    </td>
+                    <td class='food'><select class='fod' name='fod4'>
+                        <option>Select</option>
+                        <option>Veg</option>
+                        <option>Non-Veg</option>
+                         </select>
+                    </td>
+                </tr>
+                
+            
+                <tr>
+                    <td class='sno'>5</td>
+                    <td ><input type='text' name='name5' class='nam' value='{{request.form.name5}}'></td>
+                    <td ><input type='text' name='age5' class='age' value='{{request.form.age5}}'></td>
+                    <td class='gender'><select class='gen' name='gen5'>
+                        <option>Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                         </select>
+                    </td>
+                    
+                    <td class='berth'><select class='brth' name='berth5'>
+                        <option>Choose Berth</option>
+                        <option>Upper Berth</option>
+                        <option>Middle Berth</option>
+                        <option>Lower Berth</option>
+                        <option>Side Upper</option>
+                        <option>Side Lower</option>
+                         </select>
+                    </td>
+                    <td class='food'><select class='fod' name='fod5'>
+                        <option>Select</option>
+                        <option>Veg</option>
+                        <option>Non-Veg</option>
+                         </select>
+                    </td>
+                </tr>
+                
+                <tr class='psng_6'>
+                    <td class='sno'>6</td>
+                    <td ><input type='text' name='name6' class='nam' value='{{request.form.name6}}'></td>
+                    <td ><input type='text' name='age6' class='age' value='{{request.form.name6}}'></td>
+                    <td class='gender'><select class='gen' name='gen6'>
+                        <option>Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                         </select>
+                    </td>
+                    
+                    <td class='berth'><select class='brth' name='berth6'>
+                        <option>Choose Berth</option>
+                        <option>Upper Berth</option>
+                        <option>Middle Berth</option>
+                        <option>Lower Berth</option>
+                        <option>Side Upper</option>
+                        <option>Side Lower</option>
+                         </select>
+                    </td>
+                    <td class='food'><select class='fod' name='fod6'>
+                        <option>Select</option>
+                        <option>Veg</option>
+                        <option>Non-Veg</option>
+                         </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table><br>
+        <div class='contact'>Contact Details</div>
+        <label class='main_contact'>Main Contact Number</label><input class='main_cnc' name='main_cnc'><br>
+        
+            
+        <label class='alt_contact'>Alternate Contact Number</label><input class='alt_cnc' name='alt_cnc' value="{{request.form.alt_cnc}}">
+        
+        <input type='submit' value='Confirm' class='cnf'><br><br>
+            <input type='text' class='lst' name='trn' value={{tr_nm}}>
+            
+            <input type='text' class='lst' name='clas' value={{cls}}>
+            
+            <input type='text' class='lst' name='dat' value={{date}}>
+            
+            <input type='text' class='lst' name='fro' value={{from_code}}>
+            
+            <input type='text' class='lst' name='to' value={{to_code}}>
+            
+            <input type='text' class='lst' name='trno' value={{tr_no}}>
+            
+            <input type='text' class='lst' name='user' value={{user}}>
+        </form>
+        {%endif%}
+    </body>
+</html> 

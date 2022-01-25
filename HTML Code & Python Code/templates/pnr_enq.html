@@ -1,0 +1,261 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+        <style>
+            body{
+                background-color: #cc14ff;
+                background-image: linear-gradient(45deg, #cc14ff 0%, #21fff4 45%, #ffe0aa 88%); 
+            }
+            .main{
+                font-size:40px;
+                font-family: sans-serif;
+                padding-left: 210px;
+            }
+            .psng_stat{
+                margin-top:30px;
+                width:1532px;
+                margin-left:-7px;
+                height: 60px;
+                background-color: #035aa6;
+                text-align: center;
+                font-size:45px;
+                color:white;
+            }
+            .stat{
+                font-size:40px;
+            }
+            .query{
+                padding-left: 450px;
+                font-size: 28px;
+            }
+            .Tmain{
+                position: absolute;
+                left:0px;
+            }
+            .passng{
+                position: absolute;
+                left: 0px;
+                top:450px;
+            }
+            .tno,.tnm,.brd,.fro,.to,.rsv,.bupt,.cls{
+                text-align: center;
+                padding-left: 50px;
+                padding-right: 50px;
+                font-size:25px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background-color: #035aa6;
+                border:1px solid black;
+                color:white;
+                border:1.5px solid black;            
+            }
+            .tno{
+               width:150px; 
+            }
+            .tnm{
+                width:150px;
+                padding-left: 30px;
+                padding-right: 20px;
+            }
+            .brd{
+                width:250px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .rsv{
+                width:190px;
+            }
+            .bupt{
+                width:210px;
+                padding-left: 30px;
+                padding-right: 20px;
+            }
+            .main_data{
+                text-align: center;
+                font-size:25px;
+                width: auto;
+                font-weight: bold;
+            }
+            .sno,.nam,.age,.gen,.brth,.seat,.food,.coch{
+                padding-top: 7px;
+                padding-bottom: 7px;
+                font-size:25px;
+                text-align: center;
+                background-color: #035aa6;
+                color:white;
+            }
+            .sno{
+                padding-left:50px;
+                padding-right:50px;
+                width:10px;
+            }
+            .nam{
+                padding-left:30px;
+                padding-right:30px;
+                width:230px;
+            }
+            .age{
+                padding-left:30px;
+                padding-right:30px;
+                width:60px;
+            }
+            .gen{
+                padding-left:30px;
+                padding-right:30px;
+                width:100px;
+            }
+            .brth{
+                padding-left:30px;
+                padding-right:30px;
+                width:170px;
+            }
+            .seat{
+                padding-left:30px;
+                padding-right:30px;
+                width:80px;
+            }
+            .food{
+                padding-left:30px;
+                padding-right:30px;
+                width:100px;
+            }
+            .coch{
+                padding-left:30px;
+                padding-right:30px;
+                width:200px;
+            }
+            .sno1,.nam1,.age1,.gen1,.brth1,.seat1,.food1,.coch1{
+                font-size:25px;
+                font-weight: bold;
+                text-align: center;
+                border:1.5px solid black;
+                padding-top: 7px;
+                padding-bottom: 7px;
+            }
+            .chrt,.tot2{
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            .empty{
+                width:100px;
+                height:70px;
+                background-color: white;
+            }
+            .total{
+                width:250px;   
+                padding-left: 20px;
+                padding-right: 20px;
+                text-align: center;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                font-size: 25px;
+                background-color: #035aa6;
+            }
+            .empty{
+                height: 60px;
+            }
+            .tot,.chart,.rmk,.train_stat{
+                color:white;
+                background-color: #035aa6;
+                font-size:25px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                text-align: center;
+            }
+            .tot2,.chrt,.remk,.train_status{
+                font-size:25px;
+                border:1.5px solid black;
+                color:black;
+                text-align: center;
+            }
+            .chrt{
+                text-align: center;
+            }
+            .main_data td{
+                padding-top: 7px;
+                padding-bottom: 7px;
+                border: 1.5px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <form action='{{url_for("pnr_det")}}' method="post">
+            <b><label class='main'>INDIAN RAILWAYS PASSENGER RESERVATION ENQUIRY</label></b>
+            
+            <div class='psng_stat'>Passenger Current Status Enquiry</div>
+            <br><p class='query'><strong>You Queried For:PNR Number:{{pnr}}</strong><br><br>
+            <st class='stat'>Current Status:CNF Confirm</st>
+            <table class='Tmain'>
+                <thead>
+                    <tr>
+                        <td class='tno'><strong>Train No.</strong></td>
+                        <td class='tnm'><strong>Train Name</strong></td>
+                        <td class='brd'><strong>Boarding Date
+                            (YYYY-MM-DD)</strong> </td>
+                        <td class='fro'><strong>From</strong> </td>
+                        <td class='to'><strong>To</strong></td>
+                        <td class='rsv'><strong>Reserved Upto</strong></td>
+                        <td class='bupt'><strong>Boarding Upto</strong></td>
+                    </tr>
+    
+                    <tr class='main_data'>
+                        <td>{{TRAIN[7]}}</td>
+                        <td>{{TRAIN[8]}}</td>
+                        <td>{{TRAIN[3]}}</td>
+                        <td>{{TRAIN[4]}}</td>
+                        <td>{{TRAIN[5]}}</td>
+                        <td>{{TRAIN[5]}}</td>
+                        <td>{{TRAIN[4]}}</td>
+                    </tr>
+                    
+                </thead>
+                </table>
+                <table class='passng'>
+                    <thead>
+                        <tr>
+                            <td class='sno'><strong>SNO.</strong></td>
+                            <td class='nam'><strong>Name</strong></td>
+                            <td class='age'><strong>Age</strong></td>
+                            <td class='gen'><strong>Gender</strong></td>
+                            <td class='brth'><strong>Berth</strong></td>
+                            <td class='seat'><strong>Seat</strong></td>
+                            <td class='food'><strong>Food</strong></td>
+                            <td class='coch'><strong>Coach/Class</strong></td>
+                        </tr>
+
+                    {%for x in range(0,len_MAIN)%}
+                    <tr>
+                        <td class='sno1'>{{x+1}}</td>
+                        <td class='nam1'>{{MAIN[x][0]}}</td>
+                        <td class='age1'>{{MAIN[x][1]}}</td>
+                        <td class='gen1'>{{MAIN[x][2]}}</td>
+                        <td class='brth1'>{{MAIN[x][3]}}</td>
+                        <td class='seat1'>{{MAIN[x][4]}}</td>
+                        <td class='food1'>{{MAIN[x][5]}}</td>
+                        <td class='coch1'>{{coach}}</td>
+                    </tr>
+                    {%endfor%}
+                    </thead>
+                    <tbody>
+                        <tr class='empty'></tr>
+                        <tr>
+                            <td class='tot'><strong>Total</strong></td>  
+                            <td class='Chart' colspan="2"><strong>Charting Status</strong></td>
+                            <td class='rmk' colspan="2"><strong>Remark if any</strong></td>
+                            <td class='train_stat' colspan='3'><strong>Train Status</strong></td>
+                        </tr>
+                        <tr>
+                            <td class='tot2'><strong>Rs. {{total_fare}}</strong></td>
+                            <td class='chrt' colspan="2"><strong>{{chart}}</strong></td>
+                            <td class='remk' colspan="2"> </td>
+                            <td class='train_status' colspan="3"><strong>{{train_stat}}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+                    
+        </form>            
+    </body>
+</html>

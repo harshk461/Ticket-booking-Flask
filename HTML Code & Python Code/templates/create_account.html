@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <style>
+            body{
+                background-color: #08AEEA;
+                background-image: linear-gradient(45deg, #08AEEA 0%, #2AF598 50%, #10e21b 100%);
+            }    
+            .container{
+                position: absolute;
+                width:60%;
+                height:90%;
+                left:20%;
+                top:5%;
+                background-color: white;
+                border-radius: 40px;
+            }
+            .login-label,.login-label2,.login-label3,.login-label4{
+                font-size:40px;
+                position: absolute;
+                left:5%;
+                font-weight: bolder;
+                color:green;
+            }
+            .input1,.input2,.input3,.input4,.input5{
+                position: absolute;
+                top:15%;
+                left:5%;
+                width:380px;
+                padding-left: 40px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                font-size:20px;
+            }
+            .input2{top:22%;}
+            .input3{top:29%;}
+            .input4{top:72%;}
+            .input5{left:50%;}
+            
+            i1,i2,i3,i4,i5,i6{
+                align-content: center;
+                position: absolute;
+                top:16.5%;
+                left:6%;
+                width:50px !important;
+                height:50px !important;
+                font-size: 20px;
+            }
+            i2{top:23.5%;}
+            i3{top:30.6%;}
+            i4{left:51%;}
+            i5{top:73.2%;}
+            i6{top:52.2%;}
+            .login-label2{
+                top:33%;
+            }
+            .login-label3{
+                top:33%;
+                left:55%;
+            }
+            .login-label4{
+                top:55%;
+                left:5%;
+            }
+            .date{
+                position: absolute;
+                top:50%;
+                left:5%;
+                width:250px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                font-size:20px;
+                padding-left: 40px;
+            }
+            .gen{
+                position: absolute;
+                top:50%;
+                left:55%;
+                width:250px;
+                font-size:20px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            .sub{
+                position: absolute;
+                top:87%;
+                left:28%;
+                width:400px;
+                font-size:30px;
+                border: none;
+                background-color: greenyellow;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                border-radius: 30px;
+            }
+            .sub:hover{
+                transition: 0.1;
+                background-color: aquamarine;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="{{url_for('crt_final')}}" method="post">
+        <div class='container'>
+            <p class='login-label'>Account</p>
+            <input type='text' name='user' class='input1' placeholder="Username"><input type='text' name='name' class='input5' placeholder="Full Name">
+            <i1 class='fa fa-user-circle' aria-hidden="true"></i1>
+            <i4 class='fa fa-user-circle' aria-hidden="true"></i4>
+            <input type='text' name='mail' class='input2' placeholder="Email Address"><br>
+            <i2 class='fa fa-envelope'></i2>
+            <input type='password' name='pass' class='input3' placeholder="Password"><br>
+            <i3 class='fa fa-key'></i3>
+            <p class='login-label2'>Date of Birth</p>
+            <input type='date' name='date' class='date'>
+            <i6 class='fa fa-calendar'></i6>
+            <p class='login-label3'>Gender</p>
+            <select class='gen' name='gen'>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+            <p class='login-label4'>Contact Details</p>
+            <input type='text' name='mobile' class='input4' placeholder="Mobile Number">
+            <i5 class='fa fa-phone'></i5>
+            
+            <input type='submit' class='sub' value="Create Account">
+        </div>
+            </form>
+    </body>
+</html> 

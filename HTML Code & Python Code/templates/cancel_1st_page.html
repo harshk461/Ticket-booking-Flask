@@ -1,0 +1,282 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-image: linear-gradient(45deg, bisque 20%, dodgerblue 60% ,greenyellow 90%);  
+            }
+            .book_tick_hist,.book_tick{
+                margin-left: -7px;
+                margin-top: -7px;
+                width:1523px;
+                padding-top: 7px;
+                padding-bottom: 7px;
+                padding-left: 10px;
+                font-size:35px;
+                font-weight: bold;
+                color:darkblue;
+                background-color: dodgerblue;
+                font-family: sans-serif;
+                border:1.5px solid blue;
+                border-style: double;
+            }
+            .book_tick{
+                margin-top: 20px;
+            }
+            .container{
+                margin-left: 15px;
+                margin-top: 20px;
+                width:1490px;
+                height: 200px;
+                border:2px solid aqua;
+                border-style: double;
+            }
+            .lbl_main,.lbl_main1,.lbl_main2,.lbl_main3,.lbl_main4{
+                padding-right: 20px;
+                font-size: 20px;
+                margin-left: 20px;
+                font-weight: 700;
+            }
+            .lbl_main{
+                position: absolute;
+                top:107px;
+            }
+            .lbl_main1{
+                position: absolute;
+                top:157px;
+            }
+            .lbl_main2{
+                position: absolute;
+                top:207px;
+            }
+            .lbl_main3{
+                position: absolute;
+                top:107px;
+                left:600px;
+            }
+            .lbl_main4{
+                position: absolute;
+                top:157px;
+                left:600px;
+            }
+            .pnr_no,.from_stat,.jour_date,.trns_id,.to_stat{
+                font-size:20px;
+            }
+            .pnr_no:hover{
+                transition: 0.1s;
+                border:2px solid blue;
+            }
+            .to_stat{
+                position: absolute;
+                top:150px;
+                left:800px;
+                width:350px;
+                background-color: azure;
+                border:0.5px solid blue;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+            .trns_id{
+                position: absolute;
+                top:100px;
+                left:800px;
+                width:350px;
+                background-color: azure;
+                border:0.5px solid blue;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+            .pnr_no{
+                position: absolute;
+                top:100px;
+                left:200px;
+                width:350px;
+                background-color: azure;
+                border:0.5px solid blue;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+            .from_stat{
+                position: absolute;
+                top:150px;
+                left:200px;
+                width:350px;
+                background-color: azure;
+                border:0.5px solid blue;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+            .jour_date{
+                position: absolute;
+                top:200px;
+                left:200px;
+                width:350px;
+                background-color: azure;
+                border:0.5px solid blue;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+            .search,.reset{
+                position: absolute;
+                top:215px;
+                left:820px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                font-size:20px;
+                background-color: skyblue;
+                border:none;
+            }
+            .reset{
+                position: absolute;
+                left:950px;
+            }
+            .main{
+                font-size:20px;
+                background-color: skyblue;
+                color:darkblue;
+                font-weight: 700;
+                padding-left: 5px;
+                padding-right: 5px;
+                text-align: left;
+            }
+            td{
+                border:1px solid black;
+                padding-left: 5px;
+                padding-right: 5px;
+                font-size:19px;
+            }
+            tr{
+                margin-bottom: 10px;
+            }
+            .trns{
+                color:blue;
+                font-size:19px;
+                width:180px;
+            }
+            .pnr{
+                font-size:19px;
+                width:180px;
+            }
+            .main2:hover{
+                background-color: lightgray;
+            }
+            .option,.sno,.trns,.pnr,.trno,.from,.to,.date_jour,.resv,.date_book{
+                font-size:22px;
+                padding-left: 10px;
+                font-weight:700;
+            }
+            
+            .sno{
+                width:70px;
+            }
+            .trns{
+                width:210px;
+            }
+            .pnr{
+                width:210px;
+            }
+            .trno{
+                width:100px;
+            }
+            .from{
+                width:100px;
+            }
+            .to{
+                width:90px;
+            }
+            .date_jour{
+                width:170px;
+            }
+            .resv{
+                width:190px;
+            }
+            .date_book{
+                width:170px;
+            }
+            .forwardBtn{
+                width:200px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background-color: greenyellow;
+                font-size: 20px;
+                margin-top: 30px;
+                border-radius: 20px;
+            }
+            .forwardBtn:hover{
+                
+                background-image: linear-gradient(45deg, bisque 20%, dodgerblue 60% ,greenyellow 90%);  
+            }
+            .main_{
+                border-collapse:separate; 
+                border-spacing:0 15px; 
+                background-color: white;
+            }
+            td{
+                font-size:20px;
+                padding-bottom: 5px;
+                padding-top: 5px;
+                font-weight: 700;
+                text-align: center;
+            }
+            .trns1{
+                color:blue;
+            }
+            table{
+                background-image: linear-gradient(45deg, bisque 20%, dodgerblue 60% ,greenyellow 90%);  
+            }
+        </style>
+    </head>
+    <body>
+        <form action="{{url_for('search_cancel')}}" method="post">
+            <div class='book_tick_hist'>Booked Ticket History</div>
+            <div class='container'>
+                <label class='lbl_main'>PNR Number:</label><input type='text' name='pnr_no' class='pnr_no' disabled><br>
+                <label class='lbl_main1'>From Station:</label><input type='text' name='from_stat' class='from_stat' disabled><br>
+                <label class='lbl_main2'>Journey Date:</label><input type='date' name='jour_date' class='jour_date' disabled><br>
+                
+                <label class='lbl_main3'>Transaction ID:</label><input type='text' name='trns_id' class='trns_id' disabled><br>
+                <label class='lbl_main4'>From Station:</label><input type='text' name='to_stat' class='to_stat' disabled><br>
+                
+                <input type='submit' class='search' value='Search' disabled>
+                <input type='reset' class='reset' value='Reset'disabled>
+            </div>
+        </form>
+        <form action="" method='post'>
+            <div class='book_tick'>Booked Tickets</div>
+            <div class='main_table'>
+                <table cellspacing=0 class='main_'>
+                    <thead>
+                        <tr class='main'>
+                            <td class='option'>Select</td>
+                            <td class='sno'>SNo</td>
+                            <td class='trns'>Transction ID</td>
+                            <td class='pnr'>PNR Number</td>
+                            <td class='trno'>Train No.</td>
+                            <td class='from'>From</td>
+                            <td class='to'>To</td>
+                            <td class='date_jour'>Date of Journey</td>
+                            <td class='resv'>Reservation Status</td>
+                            <td class='date_book'>Date of Booking</td>
+                        </tr><br>
+                        {%for x in range(0,len_main)%}
+                        <tr class='main2'>
+                            <td class='option1'><center><input type='checkbox' class='chk' name='option{{x+1}}'></center></td>
+                            <td>{{x+1}}</td>
+                            <td class='trns1'>{{List_Main[x][1]}}</td>
+                            <td class='pnr1'>{{List_Main[x][0]}}</td>
+                            <td class='trno1'>{{List_Main[x][8]}}</td>
+                            <td class='from1'>{{List_Main[x][4]}}</td>
+                            <td class='to1'>{{List_Main[x][5]}}</td>
+                            <td class='date_jour1'>{{List_Main[x][3]}}</td>
+                            <td class='resv1'>{{List_Main[x][9]}}</td>
+                            <td class='date_book1'>{{List_Main[x][2]}}</td>
+                        </tr>
+                        {%endfor%}
+                    </thead>
+                </table>
+                <button class="forwardBtn" onclick="{{url_for('cncl')}}">Confirm</button>
+            </div>
+        </form>
+    </body>
+</html>
